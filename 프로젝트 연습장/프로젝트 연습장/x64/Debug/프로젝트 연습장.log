@@ -1,0 +1,3 @@
+﻿  소스_ModuleBase.cpp
+C:\Users\BIT\Documents\카카오톡 받은 파일\프로젝트 연습장\프로젝트 연습장\소스_ModuleBase.cpp(117,7): warning C4101: 'bGo' :참조되지 않은 지역 변수입니다.
+  프로젝트 연습장.vcxproj -> C:\Users\BIT\Documents\카카오톡 받은 파일\프로젝트 연습장\x64\Debug\프로젝트 연습장.exe
