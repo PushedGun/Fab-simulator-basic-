@@ -138,29 +138,25 @@ void ModuleBase::work(vector<ModuleBase*> m_v_pModule) //LL <--> EFEM
 	//		}
 	//	}
 	//}
-
-	while (1)
+	while (m_v_pModule.size() > 0)
 	{
-		while (m_v_pModule.size() > 0)
+		for (int i = 0; i < m_v_pModule.size(); i++)
 		{
-			for (int i = 0; i < m_v_pModule.size(); i++)
+			pM = (ModuleBase*)m_v_pModule[i];
+
+			if (pM->GetIsWorking() == false && pM->GetWaferCount() > 0)
 			{
-				pM = (ModuleBase*)m_v_pModule[i];
+				//!!!!!!!!!!!!!!!!//
+				isWorking = true;
 
-				if (pM->GetIsWorking() == false && pM->GetWaferCount() > 0)
-				{
-					//!!!!!!!!!!!!!!!!//
-					isWorking = true;
+				MoveWafer(pM);
 
-					MoveWafer(pM);
+				//for (int i = 0; i < 10; i++)
+				//	cout << GetModuleName() << endl;
 
-					//for (int i = 0; i < 10; i++)
-					//	cout << GetModuleName() << endl;
-
-					isWorking = false;
-					//!!!!!!!!!!!!!!!!//
-					m_v_pModule.erase(m_v_pModule.begin() + i);
-				}
+				isWorking = false;
+				//!!!!!!!!!!!!!!!!//
+				//m_v_pModule.erase(m_v_pModule.begin() + i);
 			}
 		}
 	}

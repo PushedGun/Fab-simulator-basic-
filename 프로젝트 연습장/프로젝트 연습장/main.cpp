@@ -13,8 +13,6 @@
 
 using namespace std;
 
-CString strWaf = _T("나는 Wafer이다");
-
 int main()
 {
 	/*VACRobot tm;
@@ -51,19 +49,16 @@ int main()
 
 	//atm.SetWaferCount(5);
 
+	LPM LPM1, LPM2, LPM3;
 	ATMRobot ATM;
 	LoadLock LL1, LL2;
 	VACRobot TM;
 	ProcessChamber PM1, PM2;
 	vector<ModuleBase*> vpM;
 
-	ModuleBase* p = NULL;
 	Sleep(100);
-	ATM.Run(p);
-
-	ATM.SetWaferCount(2);
-
 	cout << "///////////////////////////////////////////////" << endl;
+	cout << "LPM 웨이퍼 수 : " << LPM1.GetWaferCount() + LPM2.GetWaferCount() + LPM3.GetWaferCount() << endl;
 	cout << "ATM 웨이퍼 수 : " << ATM.GetWaferCount() << endl;
 	cout << "LL1 웨이퍼 수 : " << LL1.GetWaferCount() << endl;
 	cout << "LL2 웨이퍼 수 : " << LL2.GetWaferCount() << endl;
@@ -72,30 +67,18 @@ int main()
 	cout << "PM2 웨이퍼 수 : " << PM2.GetWaferCount() << endl;
 	cout << "///////////////////////////////////////////////" << endl;
 
-	Sleep(100);
-	cout << "///////////////////////////////////////////////" << endl;
-	cout << "ATM 웨이퍼 수 : " << ATM.GetWaferCount() << endl;
-	cout << "LL1 웨이퍼 수 : " << LL1.GetWaferCount() << endl;
-	cout << "LL2 웨이퍼 수 : " << LL2.GetWaferCount() << endl;
-	cout << "TM 웨이퍼 수 : " << TM.GetWaferCount() << endl;
-	cout << "PM1 웨이퍼 수 : " << PM1.GetWaferCount() << endl;
-	cout << "PM2 웨이퍼 수 : " << PM2.GetWaferCount() << endl;
-	cout << "///////////////////////////////////////////////" << endl;
+	vpM.push_back(&LPM1);
+	vpM.push_back(&LPM2);
+	vpM.push_back(&LPM3);
+	
+	ATM.Run(vpM);
+
 	vpM.clear();
 	vpM.push_back(&ATM);
 
 	LL1.Run(vpM);
 	LL2.Run(vpM);
 
-	Sleep(100);
-	cout << "///////////////////////////////////////////////" << endl;
-	cout << "ATM 웨이퍼 수 : " << ATM.GetWaferCount() << endl;
-	cout << "LL1 웨이퍼 수 : " << LL1.GetWaferCount() << endl;
-	cout << "LL2 웨이퍼 수 : " << LL2.GetWaferCount() << endl;
-	cout << "TM 웨이퍼 수 : " << TM.GetWaferCount() << endl;
-	cout << "PM1 웨이퍼 수 : " << PM1.GetWaferCount() << endl;
-	cout << "PM2 웨이퍼 수 : " << PM2.GetWaferCount() << endl;
-	cout << "///////////////////////////////////////////////" << endl;
 	vpM.clear();
 	vpM.push_back(&LL1);
 	vpM.push_back(&LL2);
@@ -117,26 +100,26 @@ int main()
 	PM1.Run(vpM);
 	PM2.Run(vpM);
 
-	cout << "일시정지" << endl;
-	ATM.Suspend();
-	LL1.Suspend();
-	LL2.Suspend();
-	TM.Suspend();
-	PM1.Suspend();
-	PM2.Suspend();
+	//cout << "일시정지" << endl;
+	//ATM.Suspend();
+	//LL1.Suspend();
+	//LL2.Suspend();
+	//TM.Suspend();
+	//PM1.Suspend();
+	//PM2.Suspend();
 
-	Sleep(100);
+	//Sleep(100);
 
-	cout << "재개" << endl;
+	//cout << "재개" << endl;
 
-	ATM.Resume();
-	LL1.Resume();
-	LL2.Resume();
-	TM.Resume();
-	PM1.Resume();
-	PM2.Resume();
+	//ATM.Resume();
+	//LL1.Resume();
+	//LL2.Resume();
+	//TM.Resume();
+	//PM1.Resume();
+	//PM2.Resume();
 
-	Sleep(300);
+	Sleep(1500);
 
 	cout << "///////////////////////////////////////////////" << endl;
 	cout << "ATM 웨이퍼 수 : " << ATM.GetWaferCount() << endl;
@@ -147,7 +130,19 @@ int main()
 	cout << "PM2 웨이퍼 수 : " << PM2.GetWaferCount() << endl;
 	cout << "///////////////////////////////////////////////" << endl;
 
-	return 0;
+	
+	while (1)
+	{
+		Sleep(1000);
+		cout << "///////////////////////////////////////////////" << endl;
+		cout << "ATM 웨이퍼 수 : " << ATM.GetWaferCount() << endl;
+		cout << "LL1 웨이퍼 수 : " << LL1.GetWaferCount() << endl;
+		cout << "LL2 웨이퍼 수 : " << LL2.GetWaferCount() << endl;
+		cout << "TM 웨이퍼 수 : " << TM.GetWaferCount() << endl;
+		cout << "PM1 웨이퍼 수 : " << PM1.GetWaferCount() << endl;
+		cout << "PM2 웨이퍼 수 : " << PM2.GetWaferCount() << endl;
+		cout << "///////////////////////////////////////////////" << endl;
+	}
 
 }
 

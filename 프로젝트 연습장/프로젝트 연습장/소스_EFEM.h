@@ -8,7 +8,14 @@
 using namespace std;
 
 #pragma once
-
+class LPM : public ModuleBase
+{
+#pragma region 생성자/소멸자
+public:
+	LPM();
+	~LPM();
+#pragma endregion
+};
 class ATMRobot : public ModuleBase
 {
 #pragma region 필드
@@ -49,8 +56,5 @@ public:
 	void Place();
 	void Rotate();
 	//virtual double Run();
-
-	void work(ModuleBase* pM);
-	void Run(ModuleBase* pM);
 #pragma endregion
 };

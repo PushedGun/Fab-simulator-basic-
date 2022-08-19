@@ -7,34 +7,24 @@
 #include <atlstr.h>
 #include <string>
 
-void ATMRobot::work(ModuleBase* pM)
+LPM::LPM()
 {
-	for (int i = 0; i < m_nWaferCount; i++)
-	{
-		//!!!!!!!!!!!!!!!!//
-		isWorking = true;
-
-		//for (int i = 0; i < 10; i++)
-			cout << "EFEM" << endl;
-
-		isWorking = false;
-		//!!!!!!!!!!!!!!!!//
-
-	}
-	
+	string m_strModuleName = "LPM";
+	m_nWaferCount = 2;
+	m_nWaferMax = 25;
 }
 
-void ATMRobot::Run(ModuleBase* pM)
+LPM::~LPM()
 {
-	th = thread(&ATMRobot::work, this, pM);
+
 }
 
 
 #pragma region 持失切/社瑚切
 ATMRobot::ATMRobot()
 {
-	m_strModuleName = "EFEM";
-	m_nWaferCount = 1;
+	m_strModuleName = "ATMRobot";
+	m_nWaferCount = 0;
 	m_nWaferMax = 2;
 	m_nPickTime = 4;
 	m_nPlaceTime = 4;
