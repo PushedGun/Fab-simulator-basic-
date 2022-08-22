@@ -10,7 +10,7 @@
 LPM::LPM()
 {
 	string m_strModuleName = "LPM";
-	m_nWaferCount = 2;
+	m_nWaferCount = 5;
 	m_nWaferMax = 25;
 }
 

@@ -94,6 +94,7 @@ bool ModuleBase::SetIsWorking(bool _value)
 void ModuleBase::MoveWafer(ModuleBase* pM)
 {
 	WaitForSingleObject(pM->hMutex, INFINITE);
+
 	while (1)
 	{
 		if (pM->SetWaferCount(pM->GetWaferCount() - 1) == true)
@@ -102,7 +103,7 @@ void ModuleBase::MoveWafer(ModuleBase* pM)
 			cout << "받은 wafer : " << 1 << endl;
 			break;
 		}
-		//cout << GetModuleName() << "대기중" << endl;
+		cout << GetModuleName() << "대기중" << endl;
 	}
 
 	//pM->SetWaferCount(pM->GetWaferCount() - 1);
@@ -138,21 +139,22 @@ void ModuleBase::work(vector<ModuleBase*> m_v_pModule) //LL <--> EFEM
 	//		}
 	//	}
 	//}
-	while (m_v_pModule.size() > 0)
+	while (1)
 	{
 		for (int i = 0; i < m_v_pModule.size(); i++)
 		{
 			pM = (ModuleBase*)m_v_pModule[i];
 
-			if (pM->GetIsWorking() == false && pM->GetWaferCount() > 0)
+			if (pM->GetIsWorking() == false && 
+				pM->GetWaferCount() > 0 &&
+				GetWaferCount() + 1 <= GetWaferMax())
 			{
 				//!!!!!!!!!!!!!!!!//
 				isWorking = true;
 
 				MoveWafer(pM);
-
 				//for (int i = 0; i < 10; i++)
-				//	cout << GetModuleName() << endl;
+				cout << GetModuleName() << endl;
 
 				isWorking = false;
 				//!!!!!!!!!!!!!!!!//

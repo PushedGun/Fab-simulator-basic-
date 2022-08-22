@@ -56,7 +56,6 @@ int main()
 	ProcessChamber PM1, PM2;
 	vector<ModuleBase*> vpM;
 
-	Sleep(100);
 	cout << "///////////////////////////////////////////////" << endl;
 	cout << "LPM 웨이퍼 수 : " << LPM1.GetWaferCount() + LPM2.GetWaferCount() + LPM3.GetWaferCount() << endl;
 	cout << "ATM 웨이퍼 수 : " << ATM.GetWaferCount() << endl;
